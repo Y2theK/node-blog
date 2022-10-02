@@ -3,8 +3,14 @@ const app = express();
 
 app.set("view engine", "ejs");
 // app.set('views',"myViews")  myViews custom folder name //default folder name - views
+
+const blogs = [
+  { title: "How to be a better developer", snippet: "Eat , Sleep , Code" },
+  { title: "How to be a better developer", snippet: "Eat , Sleep , Code" },
+  { title: "How to be a better developer", snippet: "Eat , Sleep , Code" },
+];
 app.get("/", (req, res) => {
-  res.render("index", { title: "Home" });
+  res.render("index", { title: "Home", blogs });
 });
 app.get("/about", (req, res) => {
   res.render("about", { title: "About" });
