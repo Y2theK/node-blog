@@ -20,6 +20,9 @@ app.use((req, res, next) => {
 //morgan middleware
 // dev is how you want to format you log history
 app.use(morgan("dev"));
+
+//static middleware
+app.use(express.static("public"));
 app.get("/", (req, res) => {
   res.render("index", { title: "Home", blogs });
 });
