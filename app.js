@@ -1,6 +1,8 @@
 const express = require("express");
 const app = express();
 const morgan = require("morgan");
+const mongoose = require("mongoose");
+require("dotenv").config();
 app.set("view engine", "ejs");
 // app.set('views',"myViews")  myViews custom folder name //default folder name - views
 
@@ -40,6 +42,10 @@ app.get("/blogs/create", (req, res) => {
 app.use((req, res) => {
   res.status(404).render("404", { title: "404" });
 });
-app.listen(4000, () => {
-  console.log("listening at port 4000");
+
+mongoose.connect(process.env.DBURL).then((res) => {
+  // console.log("res", res);
+  app.listen(process.env.PORT, () => {
+    console.log("connect to db and listening at port ", process.env.PORT);
+  });
 });
