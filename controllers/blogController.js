@@ -20,7 +20,9 @@ const getOneBlog = (req, res) => {
     .then((result) => {
       res.render("detail", { title: "Blog Detail", blog: result });
     })
-    .catch((err) => console.log(err));
+    .catch((err) => {
+      res.render("404");
+    });
 };
 const createNewBlog = (req, res) => {
   res.render("index", { title: "Create New Blog" });
@@ -35,9 +37,20 @@ const createBlog = (req, res) => {
     })
     .catch((err) => console.log(err));
 };
+const deleteBlog = (req, res) => {
+  const id = req.params.id;
+  Blog.findByIdAndDelete(id)
+    .then((result) => {
+      res.json({ redirect: "/blogs" });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
 module.exports = {
   getBlogs,
   createBlog,
   getOneBlog,
   createNewBlog,
+  deleteBlog,
 };

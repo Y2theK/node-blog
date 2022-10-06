@@ -5,10 +5,12 @@ const {
   createBlog,
   getOneBlog,
   createNewBlog,
+  deleteBlog,
 } = require("../controllers/blogController");
 
 router.get("/", getBlogs);
 router.get("/:id", getOneBlog);
+router.delete("/:id", deleteBlog);
 // router.get("/create", createNewBlog);
 router.post("/", createBlog);
 module.exports = router;
