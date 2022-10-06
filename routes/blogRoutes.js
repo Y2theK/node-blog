@@ -9,8 +9,8 @@ const {
 } = require("../controllers/blogController");
 
 router.get("/", getBlogs);
+router.get("/create", createNewBlog);
 router.get("/:id", getOneBlog);
 router.delete("/:id", deleteBlog);
-// router.get("/create", createNewBlog);
 router.post("/", createBlog);
 module.exports = router;

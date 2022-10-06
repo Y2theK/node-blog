@@ -25,7 +25,7 @@ const getOneBlog = (req, res) => {
     });
 };
 const createNewBlog = (req, res) => {
-  res.render("index", { title: "Create New Blog" });
+  res.render("create", { title: "Create New Blog" });
 };
 const createBlog = (req, res) => {
   console.log(req.body);
