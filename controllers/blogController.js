@@ -5,7 +5,7 @@ const getBlogs = (req, res) => {
   Blog.find()
     .sort({ createdAt: -1 })
     .then((result) => {
-      res.render("index", { title: "All Blogs", blogs: result });
+      res.render("blogs/index", { title: "All Blogs", blogs: result });
       // res.send(result);
     })
     .catch((err) => console.log(err));
@@ -18,14 +18,14 @@ const getOneBlog = (req, res) => {
   }
   Blog.findById(id)
     .then((result) => {
-      res.render("detail", { title: "Blog Detail", blog: result });
+      res.render("blogs/detail", { title: "Blog Detail", blog: result });
     })
     .catch((err) => {
-      res.render("404");
+      res.status(404).render("404", { title: "Not Found" });
     });
 };
 const createNewBlog = (req, res) => {
-  res.render("create", { title: "Create New Blog" });
+  res.render("blogs/create", { title: "Create New Blog" });
 };
 const createBlog = (req, res) => {
   console.log(req.body);
